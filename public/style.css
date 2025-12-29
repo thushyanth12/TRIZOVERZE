@@ -18,6 +18,7 @@
 body {
     background-color: var(--bg);
     color: var(--text);
+    padding-top: 80px;
     font-family: var(--font-main);
     overflow-x: hidden;
     scroll-behavior: smooth;
@@ -26,27 +27,30 @@ body {
 /* Noise Overlay */
 .noise-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.05"/%3E%3C/svg%3E');
-    pointer-events: none;
-    z-index: 999;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none; /* THIS IS CRITICAL */
+}
+
+.nav-links {
+    position: absolute;         
+    top: 120px;               /* below header */
+    left: 20px;
+    z-index: 50;              /* BELOW header (100) but ABOVE content */
 }
 
 /* Header */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 4rem;
     position: fixed;
     top: 0;
     width: 100%;
+    height: 80px;
+    padding: 0 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     backdrop-filter: blur(15px);
     z-index: 100;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .logo {
@@ -61,19 +65,22 @@ header {
 }
 
 .nav-link {
-    color: var(--text);
-    text-decoration: none;
+    
     margin: 0 1.5rem;
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: 1rem;
+    color: #160303;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
     letter-spacing: 0.15em;
     opacity: 0.6;
-    transition: all 0.3s;
+
 }
 
 .nav-link:hover {
     opacity: 1;
-    color: var(--accent);
+    
 }
 
 /* Hero */
@@ -409,6 +416,8 @@ footer {
 
 /* Cart Icon Badge */
 .cart-icon {
+    display: flex;
+    align-items: center;
     position: relative;
     cursor: pointer;
     font-size: 1.2rem;
