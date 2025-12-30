@@ -98,6 +98,10 @@ function toggleCart() {
     document.querySelector('.cart-overlay').classList.toggle('active');
 }
 
+function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('active');
+}
+
 function addToCart(btn, id) {
     const card = btn.closest('.card');
     const sizeSelect = card.querySelector('.size-select');
